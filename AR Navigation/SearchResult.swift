@@ -35,7 +35,6 @@ struct SearchResult: View {
             }
             .background(Color.white)
             .cornerRadius(15)
-            .padding(.horizontal, 20)
             
         }
         .fixedSize(horizontal: false, vertical: true)

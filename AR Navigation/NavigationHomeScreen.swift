@@ -81,7 +81,6 @@ struct NavigationHomeScreen: View {
                 .padding()
                 .background(Color.white)
                 .cornerRadius(50)
-                .padding(.horizontal)
                 .padding(.top, 10)
                 
                 if isSearchBarFocused || !searchText.isEmpty {
@@ -89,11 +88,18 @@ struct NavigationHomeScreen: View {
                 }
 
                 Spacer()
+                
+                // Confirm Destination Modal
+                ConfirmDestinationModal()
             }
+            .padding(.horizontal)
+            
+                    
         }
         .onTapGesture { isSearchBarFocused = false }
     }
 }
+
 
 // LocationManager Class
 class LocationManager: NSObject, ObservableObject {
