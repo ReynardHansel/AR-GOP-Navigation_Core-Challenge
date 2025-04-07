@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchResult: View {
     let destinations: [Destination]
     @Binding var selectedDestination: Destination?
+    @FocusState.Binding var isSearchBarFocused: Bool
 
     //      TESTING PURPOSES
     //    @State var previewSelectedDestination: Destination?
@@ -22,7 +23,7 @@ struct SearchResult: View {
                         selectedDestination = destination
                         //                    previewSelectedDestination = destination
                         //                    print("Selected destination:
-                        
+                        isSearchBarFocused = false
                     } label: {
                         Text(destination.name)
                             .padding(.vertical, 10)
@@ -35,7 +36,7 @@ struct SearchResult: View {
             }
             .background(Color.white)
             .cornerRadius(15)
-            
+
         }
         .fixedSize(horizontal: false, vertical: true)
 
@@ -45,8 +46,14 @@ struct SearchResult: View {
 }
 
 #Preview {
-    SearchResult(
-        destinations: destinationDB, selectedDestination: .constant(nil))
+    @Previewable @State var selectedDestination: Destination? = nil
+    @FocusState var isSearchBarFocused: Bool
+
+    return SearchResult(
+        destinations: destinationDB,
+        selectedDestination: $selectedDestination,
+        isSearchBarFocused: $isSearchBarFocused
+    )
 }
 
 //* NOTE:

@@ -61,14 +61,6 @@ struct NavigationHomeScreen: View {
             .onAppear {
                 locationManager.requestLocation()
             }
-            //            .onChange(of: locationManager.lastLocation) { newLocation in
-            //                if let location = newLocation {
-            //                    cameraPosition = .region(MKCoordinateRegion(
-            //                        center: location.coordinate,
-            //                        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            //                    ))
-            //                }
-            //            }
 
             VStack {
                 // Search bar
@@ -84,13 +76,19 @@ struct NavigationHomeScreen: View {
                 .padding(.top, 10)
                 
                 if isSearchBarFocused || !searchText.isEmpty {
-                    SearchResult(destinations: filteredDestinations, selectedDestination: $selectedDestination)
+                    SearchResult(
+                        destinations: filteredDestinations,
+                        selectedDestination: $selectedDestination,
+                        isSearchBarFocused: $isSearchBarFocused
+                    )
                 }
 
                 Spacer()
                 
                 // Confirm Destination Modal
-                ConfirmDestinationModal()
+                if selectedDestination != nil {
+                    ConfirmDestinationModal(selectedDestination: $selectedDestination)
+                }
             }
             .padding(.horizontal)
             
