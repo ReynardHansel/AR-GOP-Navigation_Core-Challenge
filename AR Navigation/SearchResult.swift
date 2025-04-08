@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct SearchResult: View {
     let destinations: [Destination]
     @Binding var selectedDestination: Destination?
+    @StateObject var pathFindingManager : PathfindingManager
+    @StateObject var locationDataManager : LocationDataManager
+    @Binding var showModal:Bool
 
     //      TESTING PURPOSES
     //    @State var previewSelectedDestination: Destination?
@@ -19,7 +23,25 @@ struct SearchResult: View {
             VStack {
                 ForEach(destinations) { destination in
                     Button {
+//                        selectedDestination = destination
+                        pathFindingManager.ResetPathfinder()
+                        locationDataManager.ResetPath()
+                        let currentLocation : CLLocationCoordinate2D = locationDataManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                        pathFindingManager.FindNewPath(
+                            userCoordinate: currentLocation,
+                            destinationName: destination.name
+                        )
+//                        print(pathFindingManager.pathCoordinate)
+//                        print(pathFindingManager.pathNodes)
+//                        print("-----------------")
+                        
+                        locationDataManager.currentPath = pathFindingManager.pathNodes
+                        showModal = true
+                        
+                        //print(locationDataManager.currentPath)
+                        
                         selectedDestination = destination
+                        
                         //                    previewSelectedDestination = destination
                         //                    print("Selected destination:
                         
@@ -35,7 +57,6 @@ struct SearchResult: View {
             }
             .background(Color.white)
             .cornerRadius(15)
-            .padding(.horizontal, 20)
             
         }
         .fixedSize(horizontal: false, vertical: true)
@@ -45,10 +66,10 @@ struct SearchResult: View {
     }
 }
 
-#Preview {
-    SearchResult(
-        destinations: destinationDB, selectedDestination: .constant(nil))
-}
+//#Preview {
+//    SearchResult(
+//        destinations: destinationDB, selectedDestination: .constant(nil))
+//}
 
 //* NOTE:
 //*

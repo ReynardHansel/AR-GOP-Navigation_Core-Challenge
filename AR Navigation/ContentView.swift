@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationHomeScreen()
+        MainView()
+//        NavigationHomeScreen()
 //        SearchResult(
 //            destinations: destinationDB, selectedDestination: .constant(nil))
     }

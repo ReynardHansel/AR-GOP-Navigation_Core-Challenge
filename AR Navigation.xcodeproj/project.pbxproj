@@ -252,9 +252,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AR Navigation/Preview Content\"";
-				DEVELOPMENT_TEAM = JFZ7TT4T4U;
+				DEVELOPMENT_TEAM = 8Q8TPSY8QC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access to camera is required";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need this to use map :D";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -266,7 +267,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.reynardhansel.AR-Navigation";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.binar.AR-Navigation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -282,9 +283,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AR Navigation/Preview Content\"";
-				DEVELOPMENT_TEAM = JFZ7TT4T4U;
+				DEVELOPMENT_TEAM = 8Q8TPSY8QC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Access to camera is required";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need this to use map :D";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -296,7 +298,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.reynardhansel.AR-Navigation";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.binar.AR-Navigation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
