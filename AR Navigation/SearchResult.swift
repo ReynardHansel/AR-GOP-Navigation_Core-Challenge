@@ -68,7 +68,7 @@ struct SearchResult: View {
 
 #Preview {
     SearchResult(
-        destinations: destinationDB,
+        destinations: destinationDBnew,
         selectedDestination: .constant(nil),
         pathFindingManager: PathfindingManager(),
         locationDataManager: LocationDataManager(),
