@@ -66,10 +66,15 @@ struct SearchResult: View {
     }
 }
 
-//#Preview {
-//    SearchResult(
-//        destinations: destinationDB, selectedDestination: .constant(nil))
-//}
+#Preview {
+    SearchResult(
+        destinations: destinationDB,
+        selectedDestination: .constant(nil),
+        pathFindingManager: PathfindingManager(),
+        locationDataManager: LocationDataManager(),
+        showModal: .constant(false)
+    )
+}
 
 //* NOTE:
 //*

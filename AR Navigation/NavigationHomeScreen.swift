@@ -65,22 +65,21 @@ struct NavigationHomeScreen: View {
             .mapStyle(.standard(pointsOfInterest: .all))
             .edgesIgnoringSafeArea(.all)
             .onAppear {
-                //locationManager.requestLocation()
+//                locationManager.requestLocation()
             }
-            //            .onChange(of: locationManager.lastLocation) { newLocation in
-            //                if let location = newLocation {
-            //                    cameraPosition = .region(MKCoordinateRegion(
-            //                        center: location.coordinate,
-            //                        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            //                    ))
-            //                }
-            //            }
 
             VStack {
                 // Search bar
                 HStack {
                     Image(systemName: "magnifyingglass")
-                    TextField("Search Destination", text: $searchText)
+                        .foregroundColor(.gray)
+                    TextField(
+                        "Search Destination",
+                        text: $searchText,
+                        prompt: Text("Search Destination")
+                            .foregroundStyle(Color.gray)
+                    )
+                        
 //                        .onTapGesture { isSearchBarFocused = true }
                         .focused($isSearchBarFocused)
                 }
@@ -148,9 +147,13 @@ struct NavigationHomeScreen: View {
 //    }
 //}
 
-//#Preview {
-//    NavigationHomeScreen()
-//}
+#Preview {
+    NavigationHomeScreen(
+        path: .constant(NavigationPath()),
+        locationDataManager: LocationDataManager(),
+        pathFindingManager: PathfindingManager()
+    )
+}
 
 //* NOTE:
 
