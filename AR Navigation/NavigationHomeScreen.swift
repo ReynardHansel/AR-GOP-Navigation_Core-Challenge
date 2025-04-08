@@ -51,11 +51,16 @@ struct NavigationHomeScreen: View {
                 // If selectedDestination && locationManager.lastLocation is not nil (safely unwraps those 2 variables) --> Than the MapPolyline will be made. If not, the code will simply not execute
                 MapPolyline(coordinates: pathFindingManager.pathCoordinate)
                 .stroke(Color.blue, lineWidth: 5)
+                
+                ForEach(destinations) { destination in
+                    Marker(destination.name, systemImage: destination.icon, coordinate: destination.destinationCoordinate)
+                }
+                
                 // delete later
 //                if let destination = selectedDestination,
-//                    let currentLocation = locationManager.lastLocation
+//                   let currentLocation = locationDataManager.locationManager.location?.coordinate
 //                {
-//                    
+//
 //                }
                 
             }
