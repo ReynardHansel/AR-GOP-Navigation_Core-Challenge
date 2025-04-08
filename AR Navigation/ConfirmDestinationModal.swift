@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ConfirmDestinationModal: View {
+    @Binding var showModal:Bool
+    @Binding var path : NavigationPath
+    
     var body: some View {
+        
                 VStack(spacing: 16) {
                     // Your custom modal content here (e.g., text, etc.)
                     Text("Do you want to confirm this destination?")
@@ -17,6 +21,7 @@ struct ConfirmDestinationModal: View {
 
                     HStack(spacing: 12) {
                         Button {
+                            showModal = false
                             // MARK: Close modal
                         } label: {
                             Text("Cancel")
@@ -28,6 +33,8 @@ struct ConfirmDestinationModal: View {
                         }
 
                         Button {
+                            showModal = false
+                            path.append("ARView")
                             // MARK: Confirm destination
                         } label: {
                             Text("Confirm")
@@ -47,7 +54,8 @@ struct ConfirmDestinationModal: View {
     }
 }
 
-#Preview {
-    ConfirmDestinationModal()
-}
+//#Preview {
+//    
+//    ConfirmDestinationModal(showModal: <#Binding<Bool>#>)
+//}
 

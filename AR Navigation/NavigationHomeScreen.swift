@@ -11,8 +11,13 @@ import SwiftUI
 
 struct NavigationHomeScreen: View {
     // Location Manager to track user position
-    @StateObject private var locationManager = LocationManager()
+    @Binding var path : NavigationPath
+    
+    //@StateObject private var locationManager = LocationManager()
 
+    @StateObject var locationDataManager : LocationDataManager
+    @StateObject var pathFindingManager : PathfindingManager
+    
     // Map camera position
     @State private var cameraPosition: MapCameraPosition = .userLocation(
         fallback: .automatic)
@@ -21,9 +26,11 @@ struct NavigationHomeScreen: View {
     @State private var searchText = ""
     @State private var selectedDestination: Destination? = nil
     @FocusState private var isSearchBarFocused: Bool
+    
+    @State var showModal : Bool = false
 
     // Access / import destination data (from: Destination.swift)
-    let destinations = destinationDB
+    let destinations = destinationDBnew
 
     var filteredDestinations: [Destination] {
         if searchText.isEmpty { return destinations }  //* --> returns all list (no filter)
@@ -42,16 +49,15 @@ struct NavigationHomeScreen: View {
 
                 //* NOTE: How the note below works:
                 // If selectedDestination && locationManager.lastLocation is not nil (safely unwraps those 2 variables) --> Than the MapPolyline will be made. If not, the code will simply not execute
-                if let destination = selectedDestination,
-                    let currentLocation = locationManager.lastLocation
-                {
-                    MapPolyline(coordinates: [
-                        currentLocation.coordinate,
-                        destination.nearestCoordinate,
-                        destination.destinationCoordinate,
-                    ])
-                    .stroke(Color.blue, lineWidth: 5)
-                }
+                MapPolyline(coordinates: pathFindingManager.pathCoordinate)
+                .stroke(Color.blue, lineWidth: 5)
+                // delete later
+//                if let destination = selectedDestination,
+//                    let currentLocation = locationManager.lastLocation
+//                {
+//                    
+//                }
+                
             }
             .mapControls {
                 MapUserLocationButton()
@@ -59,7 +65,7 @@ struct NavigationHomeScreen: View {
             .mapStyle(.standard(pointsOfInterest: .all))
             .edgesIgnoringSafeArea(.all)
             .onAppear {
-                locationManager.requestLocation()
+                //locationManager.requestLocation()
             }
             //            .onChange(of: locationManager.lastLocation) { newLocation in
             //                if let location = newLocation {
@@ -84,13 +90,22 @@ struct NavigationHomeScreen: View {
                 .padding(.top, 10)
                 
                 if isSearchBarFocused || !searchText.isEmpty {
-                    SearchResult(destinations: filteredDestinations, selectedDestination: $selectedDestination)
+                    SearchResult(
+                        destinations: filteredDestinations,
+                        selectedDestination: $selectedDestination,
+                        pathFindingManager: pathFindingManager,
+                        locationDataManager: locationDataManager,
+                        showModal: $showModal
+                    )
                 }
 
                 Spacer()
                 
                 // Confirm Destination Modal
-                ConfirmDestinationModal()
+                if showModal {
+                    ConfirmDestinationModal(showModal: $showModal,path: $path)
+                }
+                
             }
             .padding(.horizontal)
             
@@ -102,40 +117,40 @@ struct NavigationHomeScreen: View {
 
 
 // LocationManager Class
-class LocationManager: NSObject, ObservableObject {
-    @Published var lastLocation: CLLocation?
+//class LocationManager: NSObject, ObservableObject {
+//    @Published var lastLocation: CLLocation?
+//
+//    private let locationManager = CLLocationManager()
+//
+//    override init() {
+//        super.init()
+//        locationManager.delegate = self
+//    }
+//
+//    func requestLocation() {
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startUpdatingLocation()
+//    }
+//}
+//
+//extension LocationManager: CLLocationManagerDelegate {
+//    func locationManager(
+//        _ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]
+//    ) {
+//        guard let location = locations.first else { return }
+//        lastLocation = location
+//    }
+//
+//    func locationManager(
+//        _ manager: CLLocationManager, didFailWithError error: Error
+//    ) {
+//        print("Failed to find user's location: \(error.localizedDescription)")
+//    }
+//}
 
-    private let locationManager = CLLocationManager()
-
-    override init() {
-        super.init()
-        locationManager.delegate = self
-    }
-
-    func requestLocation() {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-}
-
-extension LocationManager: CLLocationManagerDelegate {
-    func locationManager(
-        _ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]
-    ) {
-        guard let location = locations.first else { return }
-        lastLocation = location
-    }
-
-    func locationManager(
-        _ manager: CLLocationManager, didFailWithError error: Error
-    ) {
-        print("Failed to find user's location: \(error.localizedDescription)")
-    }
-}
-
-#Preview {
-    NavigationHomeScreen()
-}
+//#Preview {
+//    NavigationHomeScreen()
+//}
 
 //* NOTE:
 

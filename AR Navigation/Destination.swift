@@ -39,3 +39,27 @@ let destinationDB: [Destination] = [
             latitude: -6.302270, longitude: 106.653346)
     ),
 ]
+
+let destinationDBnew: [Destination] = [
+    Destination(
+        name: "Jogging Track The Breeze",
+        nearestCoordinate: CLLocationCoordinate2D(
+            latitude: -6.301771, longitude: 106.653436),
+        destinationCoordinate: CLLocationCoordinate2D(
+            latitude: -6.301937, longitude: 106.654244)
+    ),
+    Destination(
+        name: "BSD Link",
+        nearestCoordinate: CLLocationCoordinate2D(
+            latitude: -6.302518, longitude: 106.652247),
+        destinationCoordinate: CLLocationCoordinate2D(
+            latitude: -6.302538, longitude: 106.652161)
+    ),
+    Destination(
+        name: "Ranch Market",
+        nearestCoordinate: CLLocationCoordinate2D(
+            latitude: -6.302271, longitude: 106.652881),
+        destinationCoordinate: CLLocationCoordinate2D(
+            latitude: -6.302270, longitude: 106.653346)
+    ),
+]
