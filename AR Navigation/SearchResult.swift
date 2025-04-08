@@ -21,6 +21,15 @@ struct SearchResult: View {
     var body: some View {
         ScrollView {
             VStack {
+                if destinations.count == 0 {
+                    Text("No Result Found")//No Result Found / No Location/Destination Found
+                        .padding(.vertical, 10)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.white)
+                        .cornerRadius(15)
+                        .padding(.horizontal, 20)
+                        .foregroundStyle(Color.black)
+                }
                 ForEach(destinations) { destination in
                     Button {
 //                        selectedDestination = destination

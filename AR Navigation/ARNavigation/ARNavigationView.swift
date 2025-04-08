@@ -33,14 +33,13 @@ struct ARNavigationView: View {
             angle: $locationDataManager.userHasToHeadInRadians
         ).overlay{
             VStack{
-                ShowStat()
-                
+//                ShowStat()
                 Button("Change Destination"){
                     locationDataManager.cycleLocation()
                 }
                 
                 if locationDataManager.hasArrived{
-                    ArrivedAtDestinationModal(showModal: $locationDataManager.hasArrived)
+                    ArrivedAtDestinationModal(showModal: $locationDataManager.hasArrived , pathFindingManager: pathfindingManager)
                 }
                 
                 

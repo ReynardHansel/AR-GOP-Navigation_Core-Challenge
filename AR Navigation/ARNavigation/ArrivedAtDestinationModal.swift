@@ -11,6 +11,8 @@ struct ArrivedAtDestinationModal: View {
     @Binding var showModal:Bool
     //@Binding var path : NavigationPath
     @Environment(\.dismiss) var dismiss
+    @State var pathFindingManager : PathfindingManager
+    
     var body: some View {
         
         VStack(spacing: 16) {
@@ -36,6 +38,7 @@ struct ArrivedAtDestinationModal: View {
                 
                 Button {
                     showModal = false
+                    pathFindingManager.ResetPathfinder()
                     dismiss()
                     //path.append("ARView")
                     // MARK: Confirm destination
@@ -57,9 +60,9 @@ struct ArrivedAtDestinationModal: View {
         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 3)
     }
 }
-
-#Preview {
-    @Previewable @State var showModal = true
-    @Previewable @State var path = NavigationPath()
-    ArrivedAtDestinationModal(showModal: $showModal)
-}
+//
+//#Preview {
+//    @Previewable @State var showModal = true
+//    @Previewable @State var path = NavigationPath()
+//    ArrivedAtDestinationModal(showModal: $showModal)
+//}

@@ -70,23 +70,42 @@ struct NavigationHomeScreen: View {
 
             VStack {
                 // Search bar
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.gray)
-                    TextField(
-                        "Search Destination",
-                        text: $searchText,
-                        prompt: Text("Search Destination")
-                            .foregroundStyle(Color.gray)
-                    )
-                        
-//                        .onTapGesture { isSearchBarFocused = true }
-                        .focused($isSearchBarFocused)
+                ZStack{
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray)
+                        TextField(
+                            "Search Destination",
+                            text: $searchText,
+                            prompt: Text("Search Destination")
+                                .foregroundStyle(Color.gray)
+                        )
+                        .foregroundStyle(Color.black)
+                            
+    //                        .onTapGesture { isSearchBarFocused = true }
+                            .focused($isSearchBarFocused)
+                        if !searchText.isEmpty
+                        {
+                            Button(action:
+                                    {
+                                self.searchText = ""
+                            })
+                            {
+                                Image(systemName: "multiply.circle")
+                                    .foregroundColor(Color(UIColor.opaqueSeparator))
+                                    .padding(.trailing, 4)
+                                    .padding(.vertical, 0)
+                                    .contentShape(Rectangle())
+                            }
+                        }
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(50)
+                    .padding(.top, 10)
+                    
+                    
                 }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(50)
-                .padding(.top, 10)
                 
                 if isSearchBarFocused || !searchText.isEmpty {
                     SearchResult(

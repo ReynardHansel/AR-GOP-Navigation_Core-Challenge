@@ -22,7 +22,8 @@ struct MainView: View {
             .navigationDestination(for: String.self) { view in
                 if view == "ARView" {
                     ARNavigationView(
-                        pathfindingManager: pathFindingManager, locationDataManager: locationDataManager
+                        pathfindingManager: pathFindingManager,
+                        locationDataManager: locationDataManager
                     )
                 }
             }

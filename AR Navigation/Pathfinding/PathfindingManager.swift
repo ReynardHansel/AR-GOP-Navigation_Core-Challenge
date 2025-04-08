@@ -19,6 +19,7 @@ class PathfindingManager : ObservableObject {
             node.ResetNode()
         }
         pathNodes = []
+        pathCoordinate = []
     }
     
     func FindNewPath (userCoordinate : CLLocationCoordinate2D, destinationName:String){
