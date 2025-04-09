@@ -17,12 +17,38 @@ struct ConfirmDestinationModal: View {
         
                 VStack(spacing: 16) {
                     // Your custom modal content here (e.g., text, etc.)
-                    Text("Do you want to confirm this destination?")
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(Color.black)
-                        
-
+//                    Text("Do you want to confirm this destination?")
+//                        .font(.headline)
+//                        .multilineTextAlignment(.center)
+//                        .foregroundStyle(Color.black)
+//                        
+                    HStack(alignment:.top){
+                        Image("Kopi Persen The Breeze")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(
+                                width: 120,
+                                height: 160
+                            )
+                            .padding()
+                        VStack (alignment: .leading){
+                            Text("Destination")
+                                .font(.headline)
+                                .bold()
+                                .padding(.bottom,10)
+                                .foregroundStyle(Color.black)
+                            VStack(alignment: .leading){
+                                Text("Distance : 100m")
+                                    .padding(.bottom,10)
+                                    .foregroundStyle(Color.gray)
+                                Text("Time : 10min")
+                                    .padding(.bottom,10)
+                                    .foregroundStyle(Color.gray)
+                            }
+                            
+                        }.padding()
+                        Spacer()
+                    }
                     HStack(spacing: 12) {
                         Button {
                             showModal = false
@@ -60,8 +86,13 @@ struct ConfirmDestinationModal: View {
     }
 }
 
-//#Preview {
-//    
-//    ConfirmDestinationModal(showModal: <#Binding<Bool>#>)
-//}
+#Preview {
+    
+    ConfirmDestinationModal(
+        showModal: .constant(true),
+        path: .constant(NavigationPath()),
+        onCancel: {},
+        onConfirm: {}
+    )
+}
 

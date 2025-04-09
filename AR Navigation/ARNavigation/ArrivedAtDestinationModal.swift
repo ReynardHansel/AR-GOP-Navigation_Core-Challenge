@@ -15,56 +15,92 @@ struct ArrivedAtDestinationModal: View {
 //    var onCancel: () -> Void
     
     var body: some View {
-        
-        VStack(spacing: 16) {
-            // Your custom modal content here (e.g., text, etc.)
-            Text("You arrived !")
-                .bold()
-                .font(.title)
-                .foregroundStyle(Color.black)
-                .multilineTextAlignment(.center)
+        HStack{
+            Spacer()
+            VStack(spacing:24){
+                Spacer()
             
-//            Text("Do you want to return to Map ?")
-//                .font(.headline)
-//                .multilineTextAlignment(.center)
-//                .foregroundStyle(Color.black)
-            HStack(spacing: 12) {
-//                Button {
-//                    showModal = false
-//                    // MARK: Close modal
-////                    onCancel()
-//                } label: {
-//                    Text("Cancel")
-//                        .bold()
-//                        .frame(maxWidth: .infinity)
-//                        .padding()
-//                        .background(Color.gray.opacity(0.1))
-//                        .cornerRadius(12)
-//                }
-                
+                VStack {
+                    Image(systemName: "location.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(.white)
+                } .frame(width: 1600,height:160)
+                   
+                    
+                Text("You arrived !")
+                    .bold()
+                    .font(.title)
+                    .foregroundStyle(Color.white)
+//                    .padding(.bottom,24)
                 Button {
                     showModal = false
                     pathFindingManager.ResetPathfinder()
                     dismiss()
-                    //path.append("ARView")
-                    // MARK: Confirm destination
                 } label: {
                     Text("Return To Map")
                         .font(.subheadline)
                         .bold()
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(.green)
+//                        .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.white)
                         .cornerRadius(12)
                 }
+                Spacer()
             }
-        }
+            Spacer()
+        }.background(Color.green)
+      
+//        VStack(spacing: 16) {
+//            // Your custom modal content here (e.g., text, etc.)
+//            Text("You arrived !")
+//                .bold()
+//                .font(.title)
+//                .foregroundStyle(Color.black)
+//                .multilineTextAlignment(.center)
+//            
+////            Text("Do you want to return to Map ?")
+////                .font(.headline)
+////                .multilineTextAlignment(.center)
+////                .foregroundStyle(Color.black)
+//            HStack(spacing: 12) {
+////                Button {
+////                    showModal = false
+////                    // MARK: Close modal
+//////                    onCancel()
+////                } label: {
+////                    Text("Cancel")
+////                        .bold()
+////                        .frame(maxWidth: .infinity)
+////                        .padding()
+////                        .background(Color.gray.opacity(0.1))
+////                        .cornerRadius(12)
+////                }
+//                
+//                Button {
+//                    showModal = false
+//                    pathFindingManager.ResetPathfinder()
+//                    dismiss()
+//                    //path.append("ARView")
+//                    // MARK: Confirm destination
+//                } label: {
+//                    Text("Return To Map")
+//                        .font(.subheadline)
+//                        .bold()
+//                        .foregroundStyle(.white)
+//                        .frame(maxWidth: .infinity)
+//                        .padding()
+//                        .background(Color.blue)
+//                        .cornerRadius(12)
+//                }
+//            }
+//        }
 //        .frame(height: 200)
-        .padding()
-        .background(Color.white)
-        .cornerRadius(20)
-        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 3)
+//        .padding()
+//        .background(Color.white)
+//        .cornerRadius(20)
+//        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 3)
     }
 }
 //

@@ -89,15 +89,24 @@ struct ARNavigationView: View {
                         locationDataManager.cycleLocation()
                     }
                     
-                    if locationDataManager.hasArrived{
-                        ArrivedAtDestinationModal(showModal: $locationDataManager.hasArrived , pathFindingManager: pathfindingManager)
-                    }
+//                    if locationDataManager.hasArrived{
+//                        ArrivedAtDestinationModal(
+//                            showModal: $locationDataManager.hasArrived ,
+//                            pathFindingManager: pathfindingManager)
+//                    }
                 }
                 
                 
                 
             }
             
+        }
+        .overlay{
+            if locationDataManager.hasArrived{
+                ArrivedAtDestinationModal(
+                    showModal: $locationDataManager.hasArrived ,
+                    pathFindingManager: pathfindingManager)
+            }
         }
     }
 }
