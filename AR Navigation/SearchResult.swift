@@ -17,6 +17,7 @@ struct SearchResult: View {
     @Binding var showModal:Bool
     @Binding var fieldText:String
     @Binding var cameraPosition: MapCameraPosition
+    @FocusState<Bool>.Binding var isSearchBarFocused: Bool
 
     //      TESTING PURPOSES
     //    @State var previewSelectedDestination: Destination?
@@ -60,6 +61,8 @@ struct SearchResult: View {
                         let zoomRegion = calculateRegionToFit(coordinates: zoomCoordinates)
                         cameraPosition = .region(zoomRegion!)
                         
+                        isSearchBarFocused = false
+                        
                         //                    previewSelectedDestination = destination
                         //                    print("Selected destination:
                         
@@ -84,20 +87,20 @@ struct SearchResult: View {
     }
 }
 
-#Preview {
-    SearchResult(
-        destinations: destinationDBnew,
-        selectedDestination: .constant(nil),
-        pathFindingManager: PathfindingManager(),
-        locationDataManager: LocationDataManager(),
-        showModal: .constant(false),
-        fieldText: .constant(""),
-        cameraPosition: .constant(.region(MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        )))
-    )
-}
+//#Preview {
+//    SearchResult(
+//        destinations: destinationDBnew,
+//        selectedDestination: .constant(nil),
+//        pathFindingManager: PathfindingManager(),
+//        locationDataManager: LocationDataManager(),
+//        showModal: .constant(false),
+//        fieldText: .constant(""),
+//        cameraPosition: .constant(.region(MKCoordinateRegion(
+//            center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+//            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//        )))
+//    )
+//}
 
 //* NOTE:
 //*

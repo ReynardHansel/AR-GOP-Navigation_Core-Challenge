@@ -85,21 +85,17 @@ struct NavigationHomeScreen: View {
                             text: $searchText,
                             prompt: Text("Search Destination")
                                 .foregroundStyle(Color.gray)
-                        ).onSubmit({
-                            
-                        })
+                        )
+                        .focused($isSearchBarFocused)
                         .onChange(of: searchText, { oldValue, newValue in
                             
                             if(selectedDestination != nil && selectedDestination?.name != searchText){
                                 showModal = false
                                 pathFindingManager.ResetPathfinder()
                             }
-
                         })
                         .foregroundStyle(Color.black)
-                            
-    //                        .onTapGesture { isSearchBarFocused = true }
-                            .focused($isSearchBarFocused)
+                        
                         if !searchText.isEmpty
                         {
                             Button(action:{
@@ -132,7 +128,8 @@ struct NavigationHomeScreen: View {
                         locationDataManager: locationDataManager,
                         showModal: $showModal,
                         fieldText: $searchText,
-                        cameraPosition: $cameraPosition
+                        cameraPosition: $cameraPosition,
+                        isSearchBarFocused: $isSearchBarFocused
                     )
                 }
 
