@@ -31,7 +31,7 @@ struct NavigationHomeScreen: View {
     @State var showModal : Bool = false
 
     // Access / import destination data (from: Destination.swift)
-    let destinations = destinationDBnew
+    let destinations = destinationDBShowcase
 
     var filteredDestinations: [Destination] {
         if searchText.isEmpty { return destinations }  //* --> returns all list (no filter)
