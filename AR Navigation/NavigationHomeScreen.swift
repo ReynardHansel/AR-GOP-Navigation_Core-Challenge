@@ -145,7 +145,10 @@ struct NavigationHomeScreen: View {
                         },
                         onConfirm: {
                             searchText = ""
-                        }
+                        },
+                        destName: selectedDestination?.name ?? "",
+                        distance: String(format:"%.0f",pathFindingManager.estimateCumulativeDistance),
+                        time: String(format:"%.0f",pathFindingManager.estimateCumulativeDistance * 0.3)
                         
                     )
                 }

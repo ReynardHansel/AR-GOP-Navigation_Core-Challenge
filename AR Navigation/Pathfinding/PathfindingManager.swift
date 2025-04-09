@@ -13,6 +13,9 @@ class PathfindingManager : ObservableObject {
     let nodes = PathNodeContainer.showCaseNodes
     @Published var pathNodes : [PathNode] = []
     @Published var pathCoordinate : [CLLocationCoordinate2D] = []
+    @Published var estimateDistances :[Float] = []
+    @Published var estimateCumulativeDistance : Float = 0
+    @Published var destinationName : String = "Destination"
     
     func ResetPathfinder(){
         for node in nodes {
@@ -20,11 +23,14 @@ class PathfindingManager : ObservableObject {
         }
         pathNodes = []
         pathCoordinate = []
+        estimateDistances = []
+        destinationName = "Destination"
     }
     
     func FindNewPath (userCoordinate : CLLocationCoordinate2D, destinationName:String){
-        // Search for target nodes
+        // Search for target and origin nodes
         var targetNode : PathNode = PathNode(nodeIndex: -1, nodeConnections: [])
+        self.destinationName = destinationName
         var minDis : Double = 1000000
         var minNode = -1
         
@@ -51,9 +57,16 @@ class PathfindingManager : ObservableObject {
         
         var pathNodeCoordinate : [CLLocationCoordinate2D] = []
         var prevNode = targetNode
+        estimateCumulativeDistance = targetNode.estimateCumulativeDistance
         pathNodes.append(prevNode)
         pathNodeCoordinate.append(prevNode.nodeCoordinate)
         while prevNode.nodeIndex != originNode.nodeIndex {
+            for nd in prevNode.nodeConnections{
+                if nd.nodeIndex == prevNode.nodeIndex {
+                    estimateDistances.insert(nd.distance, at: 0)
+                    break
+                }
+            }
             prevNode = nodes[prevNode.previousNodeIndex]
 //            pathNodes.append(prevNode)
 //            path.append(prevNode.nodeCoordinate)
