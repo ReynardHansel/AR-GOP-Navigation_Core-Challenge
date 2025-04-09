@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 import CoreLocation
 
 struct SearchResult: View {
@@ -15,6 +16,7 @@ struct SearchResult: View {
     @StateObject var locationDataManager : LocationDataManager
     @Binding var showModal:Bool
     @Binding var fieldText:String
+    @Binding var cameraPosition: MapCameraPosition
 
     //      TESTING PURPOSES
     //    @State var previewSelectedDestination: Destination?
@@ -53,6 +55,11 @@ struct SearchResult: View {
                         
                         selectedDestination = destination
                         
+                        // MARK: Camera Zoom position
+                        let zoomCoordinates = [currentLocation, destination.destinationCoordinate]
+                        let zoomRegion = calculateRegionToFit(coordinates: zoomCoordinates)
+                        cameraPosition = .region(zoomRegion!)
+                        
                         //                    previewSelectedDestination = destination
                         //                    print("Selected destination:
                         
@@ -84,7 +91,11 @@ struct SearchResult: View {
         pathFindingManager: PathfindingManager(),
         locationDataManager: LocationDataManager(),
         showModal: .constant(false),
-        fieldText: .constant("")
+        fieldText: .constant(""),
+        cameraPosition: .constant(.region(MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        )))
     )
 }
 
