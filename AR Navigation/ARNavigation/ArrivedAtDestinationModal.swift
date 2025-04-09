@@ -12,6 +12,7 @@ struct ArrivedAtDestinationModal: View {
     //@Binding var path : NavigationPath
     @Environment(\.dismiss) var dismiss
     @State var pathFindingManager : PathfindingManager
+//    var onCancel: () -> Void
     
     var body: some View {
         
@@ -19,22 +20,27 @@ struct ArrivedAtDestinationModal: View {
             // Your custom modal content here (e.g., text, etc.)
             Text("You arrived !")
                 .bold()
-                .font(.title2)
-            Text("Do you want to return to Map ?")
-                .font(.headline)
+                .font(.title)
+                .foregroundStyle(Color.black)
                 .multilineTextAlignment(.center)
+            
+//            Text("Do you want to return to Map ?")
+//                .font(.headline)
+//                .multilineTextAlignment(.center)
+//                .foregroundStyle(Color.black)
             HStack(spacing: 12) {
-                Button {
-                    showModal = false
-                    // MARK: Close modal
-                } label: {
-                    Text("Cancel")
-                        .bold()
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(12)
-                }
+//                Button {
+//                    showModal = false
+//                    // MARK: Close modal
+////                    onCancel()
+//                } label: {
+//                    Text("Cancel")
+//                        .bold()
+//                        .frame(maxWidth: .infinity)
+//                        .padding()
+//                        .background(Color.gray.opacity(0.1))
+//                        .cornerRadius(12)
+//                }
                 
                 Button {
                     showModal = false
@@ -43,7 +49,8 @@ struct ArrivedAtDestinationModal: View {
                     //path.append("ARView")
                     // MARK: Confirm destination
                 } label: {
-                    Text("Confirm")
+                    Text("Return To Map")
+                        .font(.subheadline)
                         .bold()
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -61,8 +68,11 @@ struct ArrivedAtDestinationModal: View {
     }
 }
 //
-//#Preview {
-//    @Previewable @State var showModal = true
-//    @Previewable @State var path = NavigationPath()
-//    ArrivedAtDestinationModal(showModal: $showModal)
-//}
+#Preview {
+    @Previewable @State var showModal = true
+    @Previewable @State var path = NavigationPath()
+    ArrivedAtDestinationModal(
+        showModal: $showModal,
+        pathFindingManager: PathfindingManager()
+    )
+}

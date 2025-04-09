@@ -19,7 +19,7 @@ class PathNode {
     var nodeConnections : [NodeConnection] = []
     var nodeCoordinate : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
-    var estimateCumulativeDistance: Float = 1000
+    var estimateCumulativeDistance: Float = Float.infinity
     var explored: Bool = false
     var previousNodeIndex : Int = -1
     

@@ -14,6 +14,7 @@ struct SearchResult: View {
     @StateObject var pathFindingManager : PathfindingManager
     @StateObject var locationDataManager : LocationDataManager
     @Binding var showModal:Bool
+    @Binding var fieldText:String
 
     //      TESTING PURPOSES
     //    @State var previewSelectedDestination: Destination?
@@ -33,6 +34,7 @@ struct SearchResult: View {
                 ForEach(destinations) { destination in
                     Button {
 //                        selectedDestination = destination
+                        fieldText = destination.name
                         pathFindingManager.ResetPathfinder()
                         locationDataManager.ResetPath()
                         let currentLocation : CLLocationCoordinate2D = locationDataManager.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -81,7 +83,8 @@ struct SearchResult: View {
         selectedDestination: .constant(nil),
         pathFindingManager: PathfindingManager(),
         locationDataManager: LocationDataManager(),
-        showModal: .constant(false)
+        showModal: .constant(false),
+        fieldText: .constant("")
     )
 }
 

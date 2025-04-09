@@ -15,8 +15,13 @@ struct BottomSheetView: View {
             showingCredits.toggle()
         }
         .sheet(isPresented: $showingCredits) {
-            Text("This app was brought to you by Hacking with Swift")
-                .presentationDetents([.medium, .large])
+
+            VStack{
+                Text("This app was brought to you by Hacking with Swift")
+            }
+//            .presentationDetents([.height(100)])
+//                .presentationCompactAdaptation()
+            
         }
     }
 }

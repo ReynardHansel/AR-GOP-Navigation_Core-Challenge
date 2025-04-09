@@ -10,6 +10,8 @@ import SwiftUI
 struct ConfirmDestinationModal: View {
     @Binding var showModal:Bool
     @Binding var path : NavigationPath
+    var onCancel : () -> Void
+    var onConfirm : () -> Void
     
     var body: some View {
         
@@ -18,11 +20,14 @@ struct ConfirmDestinationModal: View {
                     Text("Do you want to confirm this destination?")
                         .font(.headline)
                         .multilineTextAlignment(.center)
+                        .foregroundStyle(Color.black)
+                        
 
                     HStack(spacing: 12) {
                         Button {
                             showModal = false
                             // MARK: Close modal
+                            onCancel()
                         } label: {
                             Text("Cancel")
                                 .bold()
@@ -35,9 +40,10 @@ struct ConfirmDestinationModal: View {
                         Button {
                             showModal = false
                             path.append("ARView")
+                            onConfirm()
                             // MARK: Confirm destination
                         } label: {
-                            Text("Confirm")
+                            Text("Navigate")
                                 .bold()
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity)

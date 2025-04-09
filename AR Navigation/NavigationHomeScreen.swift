@@ -13,6 +13,7 @@ struct NavigationHomeScreen: View {
     // Location Manager to track user position
     @Binding var path : NavigationPath
     
+    
     //@StateObject private var locationManager = LocationManager()
 
     @StateObject var locationDataManager : LocationDataManager
@@ -84,16 +85,27 @@ struct NavigationHomeScreen: View {
                             text: $searchText,
                             prompt: Text("Search Destination")
                                 .foregroundStyle(Color.gray)
-                        )
+                        ).onSubmit({
+                            
+                        })
+                        .onChange(of: searchText, { oldValue, newValue in
+                            
+                            if(selectedDestination != nil && selectedDestination?.name != searchText){
+                                showModal = false
+                                pathFindingManager.ResetPathfinder()
+                            }
+
+                        })
                         .foregroundStyle(Color.black)
                             
     //                        .onTapGesture { isSearchBarFocused = true }
                             .focused($isSearchBarFocused)
                         if !searchText.isEmpty
                         {
-                            Button(action:
-                                    {
+                            Button(action:{
                                 self.searchText = ""
+                                showModal = false
+                                pathFindingManager.ResetPathfinder()
                             })
                             {
                                 Image(systemName: "multiply.circle")
@@ -118,7 +130,8 @@ struct NavigationHomeScreen: View {
                         selectedDestination: $selectedDestination,
                         pathFindingManager: pathFindingManager,
                         locationDataManager: locationDataManager,
-                        showModal: $showModal
+                        showModal: $showModal,
+                        fieldText: $searchText
                     )
                 }
 
@@ -126,7 +139,17 @@ struct NavigationHomeScreen: View {
                 
                 // Confirm Destination Modal
                 if showModal {
-                    ConfirmDestinationModal(showModal: $showModal,path: $path)
+                    ConfirmDestinationModal(
+                        showModal: $showModal,
+                        path: $path,
+                        onCancel: {
+                            searchText = ""
+                        },
+                        onConfirm: {
+                            searchText = ""
+                        }
+                        
+                    )
                 }
                 
             }

@@ -25,6 +25,7 @@ struct MainView: View {
                         pathfindingManager: pathFindingManager,
                         locationDataManager: locationDataManager
                     )
+                    .navigationBarHidden(true)
                 }
             }
         }
