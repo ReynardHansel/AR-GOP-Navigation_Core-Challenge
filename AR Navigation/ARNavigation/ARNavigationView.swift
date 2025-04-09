@@ -32,46 +32,75 @@ struct ARNavigationView: View {
             modelName: "Direction_Arrow",
             angle: $locationDataManager.userHasToHeadInRadians
         )
+        
+        
 
         .overlay(alignment: .bottom, content: {
             
             VStack{
-                HStack{
+                HStack(spacing:30){
                     Button{
                         pathfindingManager.ResetPathfinder()
                         dismiss()
                         
                     } label: {
-                        Image(systemName: "arrowshape.turn.up.backward.circle")
+                        Image(systemName: "multiply.circle")
                             .resizable()
                             .scaledToFit()
-                            .foregroundStyle(Color.gray)
+                            .frame(width: 32,height: 32)
+                            .foregroundStyle(Color.red)
                     }
-                    .padding()
                     VStack{
-                        Text("Destination")
-                            .foregroundStyle(Color.gray)
+//                        Text("Destination")
+//                            .foregroundStyle(Color.gray)
+//                            .multilineTextAlignment(.center)
                         Text("Jogging Park Gop Lorem Ipsum")
+                            .font(.title2)
+                            .multilineTextAlignment(.center)
                             .foregroundStyle(Color.black)
                             .bold()
+                        HStack(spacing:20) {
+                            
+                            Image(systemName: "figure.walk")
+                                .resizable()
+                                .scaledToFit()
+                                .padding(.trailing,-10)
+                                .foregroundStyle(Color.gray)
+                            Text("100 m")
+                                .font(.subheadline)
+                                .foregroundStyle(Color.gray)
+                                .bold()
+                            Image(systemName: "clock")
+                                .resizable()
+                                .scaledToFit()
+                                .padding(.trailing,-10)
+                                .foregroundStyle(Color.gray)
+                            Text("6 min")
+                                .font(.subheadline)
+                                .foregroundStyle(Color.gray)
+                                .bold()
+                        }.frame(height: 24)
+                        
+                        
+
                         
                     }
-                    Spacer()
-                    VStack{
-                        Text("estimate")
-                            .foregroundStyle(Color.gray)
-                        Text("100m")
-                            .foregroundStyle(Color.black)
-                            .bold()
-                        Text("6min")
-                            .foregroundStyle(Color.black)
-                            .bold()
-                    }
-                    
+//                    Spacer()
+//                    VStack{
+//                        Text("estimate")
+//                            .foregroundStyle(Color.gray)
+//                        Text("100m")
+//                            .foregroundStyle(Color.black)
+//                            .bold()
+//                        Text("6min")
+//                            .foregroundStyle(Color.black)
+//                            .bold()
+//                    }
                     Spacer()
                 }
+                .padding()
             }
-            .frame(height: 64 + 20)
+            .frame(height: 100 ) //88
             .background(Color.white)
             .clipShape(
                 .rect(
@@ -84,6 +113,7 @@ struct ARNavigationView: View {
         })
         .overlay{
             VStack{
+                ShowStat()
                 ZStack{
                     Button("Change Destination"){
                         locationDataManager.cycleLocation()

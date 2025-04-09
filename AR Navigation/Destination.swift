@@ -74,26 +74,26 @@ let destinationDBShowcase: [Destination] = [
     Destination(
         name: "Collab 04 Lab Apple",
         nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-        destinationCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        destinationCoordinate: CLLocationCoordinate2D(latitude: -6.3020440, longitude: 106.6525108),
         icon: "chair.lounge.fill"
     ),
     Destination(
         name: "Toilet GOP 9",
         nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-        destinationCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        destinationCoordinate: CLLocationCoordinate2D(latitude: -6.3024286, longitude: 106.6522204),
         icon: "toilet.fill"
     ),
-    Destination(
-        name: "Lift Basement GOP 9",
-        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-        destinationCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-        icon: "stairs"
-    ),
-    Destination(
-        name: "Kopi Persen The Breeze",
-        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-        destinationCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-        icon: "bus.fill"
-    ),
+//    Destination(
+//        name: "Lift Basement GOP 9",
+//        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+//        destinationCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+//        icon: "stairs"
+//    ),
+//    Destination(
+//        name: "Kopi Persen The Breeze",
+//        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+//        destinationCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+//        icon: "bus.fill"
+//    ),
     
 ]

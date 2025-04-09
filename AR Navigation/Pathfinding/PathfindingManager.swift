@@ -10,7 +10,7 @@ import CoreLocation
 
 class PathfindingManager : ObservableObject {
     
-    let nodes = PathNodeContainer.testingNodes3
+    let nodes = PathNodeContainer.showCaseNodes
     @Published var pathNodes : [PathNode] = []
     @Published var pathCoordinate : [CLLocationCoordinate2D] = []
     
