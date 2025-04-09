@@ -12,56 +12,50 @@ struct ConfirmDestinationModal: View {
     @Binding var path : NavigationPath
     var onCancel : () -> Void
     var onConfirm : () -> Void
+    var destName : String = "OK"
+    var distance : String = "OK"
+    var time : String = "OK"
     
     var body: some View {
         
-                VStack(spacing: 16) {
-                    // Your custom modal content here (e.g., text, etc.)
-//                    Text("Do you want to confirm this destination?")
-//                        .font(.headline)
-//                        .multilineTextAlignment(.center)
-//                        .foregroundStyle(Color.black)
-//                        
+                VStack(spacing: 0) {
                     HStack(alignment:.top){
-                        Image("Kopi Persen The Breeze")
+                        Image(destName)
                             .resizable()
                             .scaledToFit()
                             .frame(
-                                width: 120,
-                                height: 160
+                                width: 120, // 3 (135)
+                                height: 160 // 4 (180)
                             )
                             .padding()
                         VStack (alignment: .leading){
-                            Text("Destination")
-                                .font(.headline)
+                            Text(destName)
+                                .font(.title2)
                                 .bold()
                                 .padding(.bottom,10)
                                 .foregroundStyle(Color.black)
-                            VStack(alignment: .leading){
-                                Text("Distance : 100m")
-                                    .padding(.bottom,10)
-                                    .foregroundStyle(Color.gray)
-                                Text("Time : 10min")
-                                    .padding(.bottom,10)
-                                    .foregroundStyle(Color.gray)
+                            VStack(alignment: .leading , spacing: 20){
+                                HStack {
+                                    Image(systemName: "figure.walk")
+                                        .foregroundStyle(Color.gray)
+                                    Text("\(distance) m")
+                                        .font(.headline)
+                                        .foregroundStyle(Color.gray)
+                                }
+                                HStack {
+                                    Image(systemName: "clock")
+                                        .foregroundStyle(Color.gray)
+                                    Text("\(time) min")
+                                        .font(.headline)
+                                        .foregroundStyle(Color.gray)
+                                }
                             }
                             
                         }.padding()
                         Spacer()
                     }
                     HStack(spacing: 12) {
-                        Button {
-                            showModal = false
-                            // MARK: Close modal
-                            onCancel()
-                        } label: {
-                            Text("Cancel")
-                                .bold()
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.gray.opacity(0.1))
-                                .cornerRadius(12)
-                        }
+                        
 
                         Button {
                             showModal = false
@@ -75,6 +69,18 @@ struct ConfirmDestinationModal: View {
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(Color.blue)
+                                .cornerRadius(12)
+                        }
+                        Button {
+                            showModal = false
+                            // MARK: Close modal
+                            onCancel()
+                        } label: {
+                            Text("Cancel")
+                                .bold()
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.gray.opacity(0.1))
                                 .cornerRadius(12)
                         }
                     }
@@ -92,7 +98,10 @@ struct ConfirmDestinationModal: View {
         showModal: .constant(true),
         path: .constant(NavigationPath()),
         onCancel: {},
-        onConfirm: {}
+        onConfirm: {},
+        destName: "Kopi Persen The Breeze",
+        distance: "600",
+        time:"20"
     )
 }
 

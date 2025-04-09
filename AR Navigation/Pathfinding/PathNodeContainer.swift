@@ -243,5 +243,44 @@ class PathNodeContainer {
         
     ]
     
+    static var showCaseNodes: [PathNode] = [
+        PathNode(
+            nodeIndex: 0,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 1, distance: 2),
+                NodeConnection(nodeIndex: 2, distance: 1),
+            ],
+            nodeName: "Apple Lab 1 Board",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.3021543, longitude: 106.6522848)
+        ),
+        PathNode(
+            nodeIndex: 1,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 0, distance: 2),
+//                NodeConnection(nodeIndex: 1, distance: 4),
+            ],
+            nodeName: "Collab 04 Lab Apple",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.3020440, longitude: 106.6525108)
+        ),
+        PathNode(
+            nodeIndex: 2,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 0, distance: 1),
+                NodeConnection(nodeIndex: 3, distance: 4),
+            ],
+            nodeName: "Intersection Lobby GOP9",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.3022913, longitude: 106.6520876)
+        ),
+        PathNode(
+            nodeIndex: 3,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 2, distance: 4),
+//                NodeConnection(nodeIndex: 1, distance: 4),
+            ],
+            nodeName: "Toilet GOP 9",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.3024286, longitude: 106.6522204)
+        ),
+    ]
+    
 }
 
