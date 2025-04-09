@@ -131,7 +131,8 @@ struct NavigationHomeScreen: View {
                         pathFindingManager: pathFindingManager,
                         locationDataManager: locationDataManager,
                         showModal: $showModal,
-                        fieldText: $searchText
+                        fieldText: $searchText,
+                        cameraPosition: $cameraPosition
                     )
                 }
 
