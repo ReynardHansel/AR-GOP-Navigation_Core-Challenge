@@ -14,7 +14,7 @@ struct SelectedDestinationModal: View {
     var destName : String = "OK"
     var distance : String = "OK"
     var time : String = "OK"
-    var scale : CGFloat = 55
+    var scale : CGFloat = 45
     
     var body: some View {
         VStack {
@@ -29,8 +29,8 @@ struct SelectedDestinationModal: View {
                         .bold()
 //                        .padding(.bottom,10)
                         .foregroundStyle(Color.black)
-                        .frame(height: 1.3 * scale)
-//                        .padding(.top,10)
+//                        .frame(height: 1.3 * scale)
+                        .padding(.top, 15)
                     VStack(alignment: .leading,spacing: 16){
                         HStack{
                             Image(systemName: "figure.walk")
@@ -51,11 +51,12 @@ struct SelectedDestinationModal: View {
                                 .foregroundStyle(Color.gray)
                         }
                     }
-                }.padding(8)
+                }
+                .padding(.leading, 8)
                 Spacer()
             }
             
-            HStack{
+            HStack(alignment: .bottom, spacing: 13.0){
                 Button {
                     showModal = false
                     onConfirm()
@@ -82,12 +83,14 @@ struct SelectedDestinationModal: View {
                         .cornerRadius(12)
                 }
             }
-            .padding(4)
+            .padding(.horizontal, 13.0)
+            .padding(.top, 3)
+            .padding(.bottom, 15)
         }//MainVstack
         .background(.white)
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 3)
-        .padding(8)
+//        .padding()
         
         
         

@@ -158,6 +158,7 @@ struct NavigationHomeScreen: View {
                             showModal = false
                         },
                         onConfirm: {
+                            selectedDestination = nil
                             path.append("ARView")
                         },
                         destName:selectedDestination?.name ?? "",
