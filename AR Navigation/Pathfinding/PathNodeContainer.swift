@@ -282,5 +282,52 @@ class PathNodeContainer {
         ),
     ]
     
+    static var testingShowcaseNodes : [PathNode] = [
+        PathNode(
+            nodeIndex: 0,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 1, distance: 8),
+                NodeConnection(nodeIndex: 2, distance: 4),
+            ],
+            nodeName: "Toilet GOP 9", //ganti lobby
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.30225186125706, longitude: 106.65222278509515)
+        ),
+        PathNode(
+            nodeIndex: 1,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 0, distance: 8),
+            ],
+            nodeName: "Collab 04 Lab Apple",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.302146341750258, longitude: 106.65258037385355)
+        ),
+        PathNode(
+            nodeIndex: 2,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 3, distance: 1),
+                NodeConnection(nodeIndex: 0, distance: 4),
+            ],
+            nodeName: "Outdoor Intersection 1",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.302178960468536, longitude: 106.65245661122626)
+        ),
+        PathNode(
+            nodeIndex: 3,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 4, distance: 1),
+                NodeConnection(nodeIndex: 2, distance: 1)
+            ],
+            nodeName: "Outdoor Intersection 2",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.301913311365339, longitude: 106.65188104993177) // ganti
+        ),
+        PathNode(
+            nodeIndex: 4,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 3, distance: 1),
+            ],
+            nodeName: "Stairs to Parking",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.301756786203655, longitude: 106.65200317681277)
+        ),
+    ]
+    
+    
 }
 

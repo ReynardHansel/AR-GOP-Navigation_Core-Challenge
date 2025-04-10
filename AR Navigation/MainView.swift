@@ -14,10 +14,7 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack(path: $path) {
-            NavigationHomeScreen(
-                path: $path,
-                locationDataManager: locationDataManager,
-                pathFindingManager: pathFindingManager)
+            AnimatedLogoSplashView(path: $path)
             .navigationBarHidden(true)
             .navigationDestination(for: String.self) { view in
                 if view == "ARView" {
@@ -25,6 +22,13 @@ struct MainView: View {
                         pathfindingManager: pathFindingManager,
                         locationDataManager: locationDataManager
                     )
+                    .navigationBarHidden(true)
+                }
+                if(view == "NavHome"){
+                    NavigationHomeScreen(
+                        path: $path,
+                        locationDataManager: locationDataManager,
+                        pathFindingManager: pathFindingManager)
                     .navigationBarHidden(true)
                 }
             }

@@ -73,6 +73,7 @@ struct SearchResult: View {
                             .background(Color.white)
                             .cornerRadius(15)
                             .padding(.horizontal, 20)
+                            .foregroundStyle(.black)
                     }
                 }
             }

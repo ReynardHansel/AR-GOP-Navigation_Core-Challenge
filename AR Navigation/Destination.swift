@@ -97,3 +97,24 @@ let destinationDBShowcase: [Destination] = [
 //    ),
     
 ]
+
+let showcaseDestination = [
+    Destination( // COllab
+        name: "Collab 04 Lab Apple",
+        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        destinationCoordinate: CLLocationCoordinate2D(latitude: -6.302146341750258, longitude: 106.65258037385355),
+        icon: "chair.lounge.fill"
+    ),
+    Destination( // LOBBY
+        name: "Toilet GOP 9",
+        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        destinationCoordinate: CLLocationCoordinate2D(latitude: -6.30225186125706, longitude: 106.65222278509515),
+        icon: "toilet.fill"
+    ),
+    Destination( // LOBBY
+        name: "Stairs to Parking",
+        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        destinationCoordinate: CLLocationCoordinate2D(latitude: -6.301756786203655, longitude: 106.65200317681277),
+        icon: "parkingsign"
+    ),
+]

@@ -31,7 +31,7 @@ struct NavigationHomeScreen: View {
     @State var showModal : Bool = false
 
     // Access / import destination data (from: Destination.swift)
-    let destinations = destinationDBShowcase
+    let destinations = showcaseDestination//destinationDBShowcase
 
     var filteredDestinations: [Destination] {
         if searchText.isEmpty { return destinations }  //* --> returns all list (no filter)
@@ -137,19 +137,32 @@ struct NavigationHomeScreen: View {
                 
                 // Confirm Destination Modal
                 if showModal {
-                    ConfirmDestinationModal(
+//                    ConfirmDestinationModal(
+//                        showModal: $showModal,
+//                        path: $path,
+//                        onCancel: {
+//                            searchText = ""
+//                        },
+//                        onConfirm: {
+//                            searchText = ""
+//                        },
+//                        destName: selectedDestination?.name ?? "",
+//                        distance: String(format:"%.0f",pathFindingManager.estimateCumulativeDistance),
+//                        time: String(format:"%.0f",pathFindingManager.estimateCumulativeDistance * 0.3)
+//                        
+//                    )
+                    SelectedDestinationModal(
                         showModal: $showModal,
-                        path: $path,
                         onCancel: {
-                            searchText = ""
+                            pathFindingManager.ResetPathfinder()
+                            showModal = false
                         },
                         onConfirm: {
-                            searchText = ""
+                            path.append("ARView")
                         },
-                        destName: selectedDestination?.name ?? "",
+                        destName:selectedDestination?.name ?? "",
                         distance: String(format:"%.0f",pathFindingManager.estimateCumulativeDistance),
                         time: String(format:"%.0f",pathFindingManager.estimateCumulativeDistance * 0.3)
-                        
                     )
                 }
                 
