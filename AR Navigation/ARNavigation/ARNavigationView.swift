@@ -13,6 +13,9 @@ struct ARNavigationView: View {
     @StateObject var pathfindingManager : PathfindingManager
     @StateObject var locationDataManager : LocationDataManager
     
+    @State var showEasterEgg: Bool = false
+    @State var showAlert:Bool = false
+    
     @ViewBuilder func ShowStat() -> some View{
         VStack{
             Text("Destination : \(locationDataManager.currentPath[locationDataManager.userNodeIndex].nodeName)")
@@ -36,25 +39,27 @@ struct ARNavigationView: View {
         .overlay(alignment: .bottom, content: {
             NavigationToolbarView(
                 onCancel: {
-                    pathfindingManager.ResetPathfinder()
-                    dismiss()
+                    showAlert = true
                 },
                 destinationName: pathfindingManager.destinationName,
                 distance: String(format:"%.0f",pathfindingManager.destinationName),
-                time: String(format:"%.0f",pathfindingManager.estimateCumulativeDistance * 0.3)
+                time: String(format:"%.0f",pathfindingManager.estimateCumulativeDistance * 0.3),
+                onEgg: {
+                    showEasterEgg.toggle()
+                }
             )
         })
         .overlay{
             VStack{
-//                ShowStat()
-//                ZStack{
-//                    Button("Change Destination"){
-//                        locationDataManager.cycleLocation()
-//                    }
-//                }
-                
-                
-                
+                if showEasterEgg {
+                    ShowStat()
+                    ZStack{
+                        Button("Change Destination"){
+                            locationDataManager.cycleLocation()
+                        }
+                    }
+                }
+               
             }
             
         }
@@ -65,6 +70,44 @@ struct ARNavigationView: View {
                     pathFindingManager: pathfindingManager)
             }
         }
+        .alert(
+            "Exit Navigation?",
+            isPresented: $showAlert
+        ){
+            Button(role: .destructive) {
+                // Handle the deletion.
+                pathfindingManager.ResetPathfinder()
+                dismiss()
+            } label: {
+                Text("Return Home")
+            }
+            Button(role: .cancel) {
+                showAlert = false
+            } label: {
+                Text("Cancel")
+            }
+        } message: {
+            Text("Are you sure you want to stop navigation? Your current route will be lost.")
+        }
+//        .alert(isPresented: $showAlert) {
+//            Alert(
+//                title: Text("Exit Navigation?"),
+//                message: Text("Are you sure you want to stop navigation? Your current route will be lost."),
+//                primaryButton: .default(
+//                    Text("Return Home"),
+//                    action: {
+//                        pathfindingManager.ResetPathfinder()
+//                        dismiss()
+//                    }
+//                ),
+//                secondaryButton: .cancel(
+//                    Text("Cancel"),
+//                    action: {
+//                        showAlert
+//                        = true                        }
+//                )
+//            )
+//        }
     }
 }
 
@@ -73,6 +116,7 @@ struct NavigationToolbarView : View {
     var destinationName : String
     var distance : String
     var time :String
+    var onEgg : () -> Void
     
     var body: some View {
         VStack{
@@ -114,13 +158,14 @@ struct NavigationToolbarView : View {
                             .foregroundStyle(Color.gray)
                             .bold()
                     }.frame(height: 24)
-                    
-                    
-
-                    
                 }
 
                 Spacer()
+                Button("egg"){
+                    onEgg()
+                }
+                .foregroundStyle(.white)
+                .frame(width: 10,height: 10)
             }
             .padding()
         }
