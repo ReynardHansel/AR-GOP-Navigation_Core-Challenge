@@ -155,10 +155,12 @@ struct NavigationHomeScreen: View {
                         showModal: $showModal,
                         onCancel: {
                             pathFindingManager.ResetPathfinder()
+                            searchText = ""
                             showModal = false
                         },
                         onConfirm: {
                             selectedDestination = nil
+                            searchText = ""
                             path.append("ARView")
                         },
                         destName:selectedDestination?.name ?? "",
