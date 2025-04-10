@@ -322,10 +322,29 @@ class PathNodeContainer {
             nodeIndex: 4,
             nodeConnections:[
                 NodeConnection(nodeIndex: 3, distance: 1),
+                NodeConnection(nodeIndex: 5, distance: 1),
             ],
             nodeName: "Stairs to Parking",
             nodeCoordinate: CLLocationCoordinate2D(latitude: -6.301756786203655, longitude: 106.65200317681277)
         ),
+        PathNode(
+            nodeIndex: 5,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 4, distance: 1),
+                NodeConnection(nodeIndex: 6, distance: 1),
+            ],
+            nodeName: "GOP Stairs",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.3015494521198825, longitude: 106.65260363406018)//
+        ),
+        PathNode(
+            nodeIndex: 6,
+            nodeConnections:[
+                NodeConnection(nodeIndex: 5, distance: 1),
+            ],
+            nodeName: "Kopi Arabica The Breeze",
+            nodeCoordinate: CLLocationCoordinate2D(latitude: -6.301725860690979, longitude: 106.65313730957605)//
+        ),
+        
     ]
     
     

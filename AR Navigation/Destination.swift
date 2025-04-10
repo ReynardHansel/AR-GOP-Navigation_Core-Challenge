@@ -92,7 +92,7 @@ let destinationDBShowcase: [Destination] = [
 //    Destination(
 //        name: "Kopi Persen The Breeze",
 //        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
-//        destinationCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+//        destinationCoordinate: CLLocationCoordinate2D(latitude: -6.301725860690979, longitude: 106.65313730957605),
 //        icon: "bus.fill"
 //    ),
     
@@ -116,5 +116,11 @@ let showcaseDestination = [
         nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
         destinationCoordinate: CLLocationCoordinate2D(latitude: -6.301756786203655, longitude: 106.65200317681277),
         icon: "parkingsign"
+    ),
+    Destination( // LOBBY
+        name: "Kopi Arabica The Breeze",
+        nearestCoordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        destinationCoordinate: CLLocationCoordinate2D(latitude: -6.301725860690979, longitude: 106.65313730957605),
+        icon: "chair.lounge.fill"
     ),
 ]
